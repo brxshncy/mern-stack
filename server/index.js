@@ -4,6 +4,7 @@ import colors from "colors";
 import { TWEET_ROUTER } from "./routes/tweetRoutes.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import { connectDB } from "./config/db.js";
+import { USER_ROUTER } from "./routes/userRoute.js";
 
 dotenv.config();
 connectDB();
@@ -15,6 +16,7 @@ app.use(
         extended: false,
     })
 );
+app.use("/api/user", USER_ROUTER);
 app.use("/api/tweets", TWEET_ROUTER);
 
 app.use(errorHandler);
